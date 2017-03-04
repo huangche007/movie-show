@@ -1,0 +1,50 @@
+<h1 class="page-header">正在热映</h1>
+
+<div class="list-group">
+	<a href="#" class="list-group-item" ng-repeat="item in subjects">
+		<span class="badge">{{item.rating.average}}分</span>
+			<div class="media" >
+				<div class="media-left">
+						<img class="media-object" ng-src="{{item.images.medium}}" alt="item.title">
+				</div>
+				<div class="media-body">
+					<h4 class="media-heading">{{item.title}}</h4>
+					<p>导演：<strong>
+								<span ng-repeat="d in item.directors">
+									{{d.name+($last ? '' : '、')}}
+								</span>
+							</strong>
+					</p>
+					<p>类型：<span>{{item.genres.join('、')}}</span></p>
+					<p>主演：<span ng-repeat="cast in  item.casts">{{cast.name+($last ? '' : '、')}}</span></p>
+					<strong style="background-color: #5D4037;color: #FFFFFF">上映年份：{{item.year}}年</strong>
+				</div>
+			</div>
+	</a>
+
+</div>
+	<div ng-show="!loading">
+		<p><span>总共有{{totalCount}}条记录、</span><span>当前第{{currentPage}}页,共{{totalPage}}页</span></p>
+
+		<div class="btn">
+			<button type="button" class="btn btn-success  btn-small" ng-class="{disabled:currentPage<=1}" ng-click="go(currentPage-1)">上一页</button>
+			<button type="button" class="btn btn-success  btn-small" ng-class="{disabled:currentPage==totalPage}" ng-click="go(currentPage+1)">下一页</button>
+		</div>
+	</div>
+
+<div class="mask" ng-show="loading">
+	<div class="sk-circle">
+		<div class="sk-circle1 sk-child"></div>
+		<div class="sk-circle2 sk-child"></div>
+		<div class="sk-circle3 sk-child"></div>
+		<div class="sk-circle4 sk-child"></div>
+		<div class="sk-circle5 sk-child"></div>
+		<div class="sk-circle6 sk-child"></div>
+		<div class="sk-circle7 sk-child"></div>
+		<div class="sk-circle8 sk-child"></div>
+		<div class="sk-circle9 sk-child"></div>
+		<div class="sk-circle10 sk-child"></div>
+		<div class="sk-circle11 sk-child"></div>
+		<div class="sk-circle12 sk-child"></div>
+	</div>
+</div>
